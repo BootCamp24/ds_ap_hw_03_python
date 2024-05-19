@@ -7,9 +7,11 @@
 
 # Modules
 import csv
+import os
 
 # Set path for file
-csvpath = "Starter_Code\PyPoll\Resources\election_data.csv"
+CSV_PATH = "Resources/election_data.csv"
+OUTPUT_PATH = "analysis/pypoll_ouput.txt"
 #c = Counter()
 
 get_ballot = list()
@@ -21,7 +23,8 @@ count1 = 0
 
 
 # Open the CSV using the UTF-8 encoding
-with open(csvpath, encoding='UTF-8') as csvfile:
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+with open(CSV_PATH, encoding='UTF-8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
 
     # Read the header row first (skip this step if there is no header)
@@ -69,7 +72,7 @@ Winner : {get_candidate[indx]}
 -------------------------\n"""
     output += last_line
     print(output)
-    with (open("output_PyPoll.txt",'w')as f):
+    with (open(OUTPUT_PATH,'w')as f):
         f.write(output)
        
 
